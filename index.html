@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banho & Tosa Feliz</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fa;
+}
+
+header{
+    background:linear-gradient(135deg,#5600b8,#00cec9);
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+header h1{
+    font-size:3rem;
+}
+
+header p{
+    margin-top:10px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.servicos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-bottom:40px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#00b894;
+    margin-bottom:10px;
+}
+
+.formulario{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+.formulario h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#00b894;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    border:none;
+    background:#25d35f;
+    color:white;
+    padding:15px;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#20ba5a;
+}
+
+footer{
+    margin-top:40px;
+    padding:20px;
+    text-align:center;
+    background:#00b894;
+    color:white;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:2rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>🐶 Banho & Tosa Feliz</h1>
+    <p>Seu pet merece o melhor cuidado!</p>
+</header>
+
+<div class="container">
+
+    <section class="servicos">
+
+        <div class="card">
+            <h3>🛁 Banho</h3>
+            <p>Banho completo com produtos de qualidade.</p>
+        </div>
+
+        <div class="card">
+            <h3>✂️ Tosa</h3>
+            <p>Tosa higiênica e especializada.</p>
+        </div>
+
+        <div class="card">
+            <h3>🐾 Banho + Tosa</h3>
+            <p>Pacote completo para o seu pet.</p>
+        </div>
+
+    </section>
+
+    <section class="formulario">
+
+        <h2>Agende seu Horário</h2>
+
+        <form id="agendamentoForm">
+
+            <div class="form-group">
+                <input
+                    type="text"
+                    id="tutor"
+                    placeholder="Nome do Tutor"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <input
+                    type="text"
+                    id="pet"
+                    placeholder="Nome do Pet"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <input
+                    type="tel"
+                    id="telefone"
+                    placeholder="Telefone"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <select id="servico" required>
+                    <option value="">Selecione o serviço</option>
+                    <option>Banho</option>
+                    <option>Tosa</option>
+                    <option>Banho + Tosa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="data" required>
+            </div>
+
+            <div class="form-group">
+                <input type="time" id="hora" required>
+            </div>
+
+            <div class="form-group">
+                <textarea
+                    id="obs"
+                    rows="4"
+                    placeholder="Observações"></textarea>
+            </div>
+
+            <button type="submit">
+                Agendar pelo WhatsApp
+            </button>
+
+        </form>
+
+    </section>
+
+</div>
+
+<footer>
+    © 2026 Banho & Tosa Feliz
+</footer>
+
+<script>
+
+document
+.getElementById("agendamentoForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let tutor =
+    document.getElementById("tutor").value;
+
+    let pet =
+    document.getElementById("pet").value;
+
+    let telefone =
+    document.getElementById("telefone").value;
+
+    let servico =
+    document.getElementById("servico").value;
+
+    let data =
+    document.getElementById("data").value;
+
+    let hora =
+    document.getElementById("hora").value;
+
+    let obs =
+    document.getElementById("obs").value;
+
+    let mensagem =
+`🐶 *NOVO AGENDAMENTO*
+
+👤 Tutor: ${tutor}
+🐾 Pet: ${pet}
+📞 Telefone: ${telefone}
+
+🛁 Serviço: ${servico}
+📅 Data: ${data}
+⏰ Horário: ${hora}
+
+📝 Observações:
+${obs}`;
+
+    /* TROQUE PELO SEU NÚMERO */
+    let numeroWhatsapp =
+    "5567999999999";
+
+    let url =
+    `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+});
+
+</script>
+
+</body>
+</html>
